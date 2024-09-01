@@ -34,28 +34,27 @@ class Student {
         string name;
         int roll;
         int age;
+    Student() {
+
+    }
+    Student(string n, int r, int a) : name(n), roll(r), age(a) {};
+
+    Student(Student &studentObj) {
+        name = studentObj.name;
+        roll = studentObj.roll;
+        age = studentObj.age;
+    }
+    ~Student() {
+        cout << name << " has been destroyed" << endl;
+    }
+
 };
 
 int main() {
-    Student s1;
-    Student s2;
-    Student s3;
-    s1.name = "Anurag";
-    s1.age = 20;
-    s1.roll = 16;
-    s2.name = "ABC";
-    s2.age = 22;
-    s2.roll = 11;
-    s3.name = "XYZ";
-    s3.age = 18;
-    s3.roll = 15;
-    cout << "Name: " << s1.name << endl;
-    cout << "Age: " << s1.age << endl;
-    cout << "Roll no.: " << s1.roll << endl;
-    cout << "Name: " << s2.name << endl;
-    cout << "Age: " << s2.age << endl;
-    cout << "Roll no.: " << s2.roll << endl;
-    cout << "Name: " << s3.name << endl;
-    cout << "Age: " << s3.age << endl;
-    cout << "Roll no.: " << s3.roll << endl;
+    Student s1("DJ", 20, 49);
+    Student s2(s1);
+
+    cout << s2.name << endl;
+    cout << s2.age << endl;
+    cout << s2.roll << endl;
 }
