@@ -25,6 +25,30 @@ void insertAtTail(ListNode *&head, int value) {
     }
 }
 
+void deleteAtPos(ListNode* &head, int pos) {
+    if(pos == 1) {
+        ListNode* del = head;
+        head = head->next;
+        ListNode* current = head;
+        while (head->next != nullptr)
+        {
+            current=current->next;
+        }
+        current->next = head;        
+        delete del;
+    }
+    else {
+        ListNode* current = head;
+        ListNode* prev = nullptr;
+        for(int i = 1; i < pos; ++i) {
+            prev = current;
+            current = current->next;
+        }
+        prev->next = current->next;
+        delete current;
+    }
+}
+
 void displayLL(ListNode *head) {
     ListNode *temp = head;
     while (temp->next != head)
@@ -35,9 +59,32 @@ void displayLL(ListNode *head) {
     cout << temp->data << endl;
 }
 
+ListNode* detectLoop(ListNode* head) {
+    if(head == nullptr) {
+        return nullptr;
+    }
+    ListNode* fast = head;
+    ListNode* slow = head;
+
+    while (fast == nullptr || fast->next == nullptr)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast) {
+            return fast;
+        }
+    }
+
+    return nullptr;
+}
+
 int main() {
     ListNode *head = NULL;
     insertAtTail(head, 5);
     insertAtTail(head, 8);
+    insertAtTail(head, 7);
+    insertAtTail(head, 9);
     displayLL(head);
+    cout << detectLoop(head);
+
 }
