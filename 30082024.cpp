@@ -1,23 +1,30 @@
-#include <iostream>
-#include <vector>
-#include <string>
-
-
+#include<iostream>
 using namespace std;
 
-void displayVector(vector<int> vec) {
-        for(int i : vec) {
-            cout << i << " ";
-        }
-        cout << endl;
-}
+enum PIECE {
+    PAWN = 1,
+    BISHOP = 3,
+    KNIGHT = 3,
+    ROOK = 5,
+    QUEEN = 9
+};
 
-int main() {
-    vector<int> myVector = {1, 2, 3, 4, 5};
-    myVector.push_back(10);
-    
-    displayVector(myVector);
-    myVector.erase(myVector.begin()+5);
-    displayVector(myVector);
-    
+enum class PieceValue {
+    PAWN = 1,
+    BISHOP = 3,
+    KNIGHT = 3,
+    ROOK = 5,
+    QUEEN = 9
+};
+
+
+int main()
+{
+    // PIECE currentPiece = PAWN;
+    // cout << "The current piece's value is " << currentPiece;
+
+    PieceValue value = PieceValue::QUEEN;
+    cout << "The value of queen is " << static_cast<int>(value);
+
+    return 0;
 }
