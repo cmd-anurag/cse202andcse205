@@ -2,9 +2,21 @@
 
 using namespace std;
 
-int count(int n) {
-    
-}
+class Base {
+    public:
+    void print() {
+        cout << "Base class\n";
+    }
+};
+
+class Derived : public Base {
+    public:
+    void print() {
+        cout << "Derived class\n";
+    }
+};
+
+
 
 int main() {
     int n;
