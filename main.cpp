@@ -2,23 +2,30 @@
 
 using namespace std;
 
-class Base {
-    public:
-    void print() {
-        cout << "Base class\n";
-    }
+#include <iostream>
+using namespace std;
+
+class ParentX {
+protected:
+    int x;
+public:
+    ParentX() : x(19) {}
 };
 
-class Derived : public Base {
-    public:
-    void print() {
-        cout << "Derived class\n";
+class ChildY : public ParentX {
+public:
+    int y;
+    
+    ChildY() : y(20) {};
+    void f() {
+        x
     }
 };
-
-
 
 int main() {
-    int n;
-
+    ParentX* ptr = new ChildY();
+    // cout << ptr->x << ", " << ptr->y;
+    return 0;
 }
+
+
