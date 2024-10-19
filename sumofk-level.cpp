@@ -19,6 +19,7 @@ public:
 };
 
 **********************************************************************/
+
 template <typename T>
 class BinaryTreeNode {
 public:
@@ -41,23 +42,29 @@ int sumAtKthLevel(BinaryTreeNode<int>* root, int k)
     q.push(nullptr);
 
     int sum = 0;
-    int count = 0;
+    int count = 1;
 
-    while(!q.empty()) {
+   while(!q.empty()) {
         BinaryTreeNode<int>* front = q.front();
         q.pop();
 
-        // if(front == nullptr && q.empty()) break;
+        if(front == nullptr && q.empty()) break;
 
         if(front == nullptr && !q.empty()) {
-            cout << "Level Completed\n";
+            ++count;
             q.push(nullptr);
         }
         else {
-            cout << front->data << " ";
+            if(count == k) {
+                sum += front->data;
+            }
             if(front->left) q.push(front->left);
             if(front->right) q.push(front->right);
         }
     }
-
+    return sum;
 }
+
+int main() {
+    
+};
