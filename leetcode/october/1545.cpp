@@ -36,7 +36,7 @@ public:
             string reversed = rev(inverted);
             result += "1" + reversed;
        }
-    //    cout << result;
+
        return result[k-1];
     }
 };

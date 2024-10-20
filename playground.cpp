@@ -2,20 +2,48 @@
 using namespace std;
 
 
-// lets try to bypass the execution of main
-
-class GlobalInitializer {
+class Node{
     public:
-        GlobalInitializer() {
-            cout << "This will be executed, main won't be\n";
-            exit(0);
-        }
+    int val;
+    Node* next;
+    Node(int a){
+        val =a;
+        next = NULL;
+    }
 };
 
-GlobalInitializer init;
 
-int main()
-{
-    cout << "This won't be executed";
-    return 0;
+
+int main() {
+    Node *head = NULL;
+    Node* lastNode = NULL;
+
+    int data;
+    int size;
+
+    cout << "Enter the size of linked list: ";
+    cin >> size;
+
+    for(int i = 0; i < size; ++i) {
+        cin >> data;
+        Node *newNode = new Node(data);
+
+        if(head == nullptr) {
+            head = newNode;
+            lastNode = newNode;
+        }
+        else {
+            lastNode->next = newNode;
+            lastNode = newNode;
+        }
+    }
+
+    Node* temp = head;
+
+    while(temp != nullptr) {
+        cout <<  temp->val << "--->";
+        temp = temp->next;
+    }
+
+
 }
