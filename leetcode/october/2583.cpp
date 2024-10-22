@@ -34,15 +34,15 @@ void printInOrder(TreeNode* root) {
 
 
 long long kthLargestLevelSum(TreeNode* root, int k) {
-    priority_queue<int> maxHeap;
-    long long result = 0;
+    priority_queue<long long int> maxHeap;
+    
 
     queue<TreeNode *> q;
     q.push(root);
 
     while(!q.empty()) {
         int size = q.size();
-        int sum = 0;
+        long long int sum = 0;
 
         for(int i = 0; i < size; ++i) {
             TreeNode* front = q.front();
@@ -56,8 +56,8 @@ long long kthLargestLevelSum(TreeNode* root, int k) {
     }
 
     for(int i = 0; i < k-1; ++i) {
-        if(maxHeap.empty()) return -1;
         maxHeap.pop();
+        if(maxHeap.empty()) return -1;
     }
     return maxHeap.top();
 }
