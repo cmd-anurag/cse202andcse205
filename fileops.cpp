@@ -2,53 +2,49 @@
 
 #include <iostream>
 #include <fstream>
+#include<string.h>
+
 
 using namespace std;
 
-int main() {
-    // ofstream file("testfile.txt");
-    // if(file) {
-    //     cout << "Success";
-    // }
-    // else {
-    //     cout << "Failure";
-    // }
+class Person {
+    public:
 
-    
-    // if(file.is_open()) {
-    //     cout << "open";
-    // }
-    // else {
-    //     cout << "closed";
-    // }
+    char name[50];
+    int age;
+    float weight;
+};
 
-    // if(file.fail()) {
-    //     // fail case
-    // }
+void WriteToBinaryFile(Person &p) {
+    fstream myFile("binaryfile.dat", ios::app | ios::binary);
+    if(!myFile) {cout << "Error writing to file"; return;}
 
-    // ifstream file("testfile.txt");
+    myFile.write(reinterpret_cast<const char *>(&p), sizeof(p));
+    cout << "Person details written to file.\n";
+    myFile.close();
+}
 
-    // if(file.fail()) {
-    //     cout << "failed";
-    //     return 0;
-    // }
+void ReadFromBinaryFile() {
+    Person person;
+    fstream myfile("binaryfile.dat", ios::in | ios::binary);
 
-    // string content;
-    // while (!file.eof())
-    // {
-    //     getline(file, content);
-    //     cout << content;
-    // }
-    // file.close();
-
-    ofstream file("testfile.txt", ios::app);
-    if(file.fail()) {
-        return -1;
+    if(!myfile){
+        cout << "error";
+        return;
     }
 
-    // file << "stream insertion";
-    file << "\nstream insertion again";
-    file.close();
+    while(myfile.read(reinterpret_cast<char *>(&person), sizeof(person))) {
+        cout << person.name << " " << person.age << " " << person.weight << endl;
+    }
 
+    myfile.close();
+}
 
+int main() {
+    Person p1;
+    strcpy(p1.name, "test");
+    p1.age = 23;
+    p1.weight = 34.45;
+    WriteToBinaryFile(p1);
+    ReadFromBinaryFile();
 }
