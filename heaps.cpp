@@ -209,33 +209,33 @@ int main() {
 
 
 
-int main()
-{
-    MyHeap maxHeap;
-    maxHeap.push(21);
-    maxHeap.push(33);
-    maxHeap.push(3);
-    maxHeap.push(34);
-    maxHeap.push(8);
-    maxHeap.push(3);
-    maxHeap.push(29);
-    cout << maxHeap.top() << "\n";
-    maxHeap.pop();
-    cout << maxHeap.top() << "\n";
-    maxHeap.pop();
-    cout << maxHeap.top() << "\n";
-    maxHeap.pop();
-    cout << maxHeap.top() << "\n";
-    maxHeap.pop();
-    cout << maxHeap.top() << "\n";
-    maxHeap.pop();
-    cout << maxHeap.top() << "\n";
-    maxHeap.pop();
-    cout << maxHeap.top() << "\n";
+// int main()
+// {
+//     MyHeap maxHeap;
+//     maxHeap.push(21);
+//     maxHeap.push(33);
+//     maxHeap.push(3);
+//     maxHeap.push(34);
+//     maxHeap.push(8);
+//     maxHeap.push(3);
+//     maxHeap.push(29);
+//     cout << maxHeap.top() << "\n";
+//     maxHeap.pop();
+//     cout << maxHeap.top() << "\n";
+//     maxHeap.pop();
+//     cout << maxHeap.top() << "\n";
+//     maxHeap.pop();
+//     cout << maxHeap.top() << "\n";
+//     maxHeap.pop();
+//     cout << maxHeap.top() << "\n";
+//     maxHeap.pop();
+//     cout << maxHeap.top() << "\n";
+//     maxHeap.pop();
+//     cout << maxHeap.top() << "\n";
 
 
-    // empty heap
-    maxHeap.pop();
-    cout << maxHeap.top() << "\n";
-    return 0;
-}
+//     // empty heap
+//     maxHeap.pop();
+//     cout << maxHeap.top() << "\n";
+//     return 0;
+// }
