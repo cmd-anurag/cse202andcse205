@@ -17,14 +17,6 @@ class Solution {
             }
         }
         
-        // for(auto i : adjlist) {
-        //     cout << i.first << " -> ";
-        //     for(int j : i.second) {
-        //         cout << j << " ";
-        //     }
-        //     cout << '\n';
-        // }
-        
         unordered_map<int, bool> visited;
         stack<int> st;
         

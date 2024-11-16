@@ -5,8 +5,11 @@ using namespace std;
 vector<int> bfsTraversal(int n, vector<vector<int>> &adj){
     // Write your code here.
     vector<int> result;
+
     queue<int> q;
+
     unordered_map<int, bool> visited;
+    
     q.push(0);
     visited[0] = true;
 
