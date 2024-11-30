@@ -1,3 +1,4 @@
+// You are using GCC
 #include <iostream>
 using namespace std;
 
@@ -6,39 +7,41 @@ int INF = 1e7;
 
 int dis[MAXN][MAXN];
 int Next[MAXN][MAXN];
-// You are using GCC
-void initialise(int n, int arr[MAXN][MAXN]) {
+
+void initialise(int V, int graph[MAXN][MAXN]) {
     //Type your code here
-    for(int i = 0; i < n; ++i) {
-        for(int j = 0; j < n; ++j) {
-            dis[i][j] = arr[i][j];
-            Next[i][j] = -1;
-        } 
+    for(int i = 0; i < V; ++i) {
+        for(int j = 0; j < V; ++j) {
+            dis[i][j] = graph[i][j];
+            if(graph[i][j] != INF) {
+                Next[i][j] = j;
+            }
+            else {
+                Next[i][j] = -1;
+            }
+        }
     }
 }
 
 void floydWarshall(int V) {
-
     //Type your code here
     for(int k = 0; k < V; ++k) {
         for(int i = 0; i < V; ++i) {
-            for(int j = 0; j<V; ++j){
+            for(int j = 0; j < V; ++j) {
                 if(dis[i][k] == INF || dis[k][j] == INF) {
                     continue;
                 }
                 int oldDistance = dis[i][j];
                 int newDistance = dis[i][k]+dis[k][j];
+                
                 if(newDistance < oldDistance) {
                     dis[i][j] = newDistance;
-                    Next[i][j] = k;
+                    Next[i][j] = Next[i][k];
                 }
-                else {
-                    Next[i][j] = j;
-                }
+                
             }
         }
     }
-    
 }
 
 void printPath(int path[], int n) {
@@ -47,6 +50,8 @@ void printPath(int path[], int n) {
         cout << path[i] << " ";
     }
 }
+
+
 int main() {
     int V;
     cin >> V;
